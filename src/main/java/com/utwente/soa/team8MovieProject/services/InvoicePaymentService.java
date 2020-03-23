@@ -1,4 +1,7 @@
 package com.utwente.soa.team8MovieProject.services;
 
-public class InvoicePaymentService {
+public interface InvoicePaymentService {
+
+    String pay(int movieId);
+
 }
