@@ -1,7 +1,19 @@
 package com.utwente.soa.team8MovieProject.services;
 
-import java.util.ArrayList;
+import com.utwente.soa.team8MovieProject.Movie;
+
+import java.util.List;
 
 public interface SearchService {
-    ArrayList<String> search(String query);
+    List<Movie> search(String query);
+
+    Movie getMovie(String imdb_id);
+
+    List<Movie> getMovies();
+
+    Movie addMovie(String imdb_id);
+
+    Movie removeMovie(String imdb_id);
+
+    void submitSuggestion(String imdb_id);
 }
