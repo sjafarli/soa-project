@@ -14,9 +14,7 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
 
     @Override
     public String pay(int movieId) {
-        //make a sync request to 3rd party service payments
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
+        //make a sync request to 3rd party Postman mock service payments
         RestTemplate restTemplate = new RestTemplate();
 
      //sync request to payment service
