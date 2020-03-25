@@ -27,6 +27,8 @@ public class VotingServiceImpl implements VotingService {
     @Override
     @JmsListener(destination = "${queue.voting}")
     public void addMovie(MovieXmlRequest movie) {
+        //TODO make sure movies cant be added twice, perhaps UNIQUE DB field. also 2nd time should count as a vote
+
         //add to voting database if there is a msg in queue
        // movies.add(movie.getMovieIdmbID());
          jdbcTemplate.update("insert into voting (name, imdb_id, votes) " + "values(?,  ?, ?)",
@@ -44,6 +46,8 @@ public class VotingServiceImpl implements VotingService {
 
     @Override
     public MovieRequestDTO voteMovie(String imdbID) {
+        //TODO still throws errors, e.g if movie not in voting list or somehow twice?
+
         MovieRequestDTO request = findMovieById(imdbID);
 
         int newVotes = request.getVotes()+1;

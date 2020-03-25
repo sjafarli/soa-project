@@ -59,9 +59,8 @@ public class SearchServiceImpl implements SearchService {
             }
         }
 
-        if (results.size() == 0) {
-            results = omdbLookup(query);
-        }
+        // TODO add only those not present already
+        results.addAll(omdbLookup(query));
 
         return results;
     }
@@ -77,7 +76,7 @@ public class SearchServiceImpl implements SearchService {
         SearchResult result = rest.getForObject("http://www.omdbapi.com/?s=" + query + "&apikey=" + API_KEY + "&r=XML&t=movie",
                 SearchResult.class);
 
-        return result.getResults().stream().map(item -> new Movie(item.getImdbID(), item.getTitle(), "" + item.getYear(), "TODO", false)).collect(Collectors.toList());
+        return result.getResults().stream().map(item -> new Movie(item.getImdbID(), item.getTitle(), item.getYear(), "TODO", false)).collect(Collectors.toList());
     }
 
     /**
@@ -129,8 +128,13 @@ public class SearchServiceImpl implements SearchService {
      */
     @Override
     public Movie addMovie(String imdb_id) throws InvalidIMdBIdException {
-        Movie movie = omdbIdLookup(imdb_id);
-        MOVIES.add(movie);
+        Movie movie;
+        try {
+            movie = getMovie(imdb_id);
+        } catch (InvalidIMdBIdException e) {
+            movie = omdbIdLookup(imdb_id);
+            MOVIES.add(movie);
+        }
         return movie;
     }
 
@@ -144,7 +148,7 @@ public class SearchServiceImpl implements SearchService {
         RestTemplate rest = new RestTemplate();
         try {
             DetailedResult result = rest.getForObject("http://www.omdbapi.com/?i=" + imdb_id + "&apikey=" + API_KEY + "&r=XML", DetailedResult.class);
-            return new Movie(result.details().getImdbID(), result.details().getTitle(), "" + result.details().getYear(), result.details().getPlot(), true);
+            return new Movie(result.details().getImdbID(), result.details().getTitle(), result.details().getYear(), result.details().getPlot(), true);
         } catch (NullPointerException e) {
             throw new InvalidIMdBIdException(imdb_id);
         }
@@ -160,6 +164,5 @@ public class SearchServiceImpl implements SearchService {
         //send to activemq
         jmsTemplate.convertAndSend(votingQueue, movieXmlRequest);
         return ResponseEntity.ok("Your movie requested has been added to the voting list!");
-
     }
 }
