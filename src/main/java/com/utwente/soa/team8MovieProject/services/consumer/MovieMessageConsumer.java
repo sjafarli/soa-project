@@ -1,5 +1,5 @@
 package com.utwente.soa.team8MovieProject.services.consumer;
-import com.utwente.soa.team8MovieProject.integrations.request.MovieRequest;
+import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class MovieMessageConsumer {
 
     //consumes the message from queue in destination
     @JmsListener(destination = "${queue.voting}")
-    public void receiveMessage(MovieRequest movie) {
+    public void receiveMessage(MovieXmlRequest movie) {
         movies.add(movie.getMovieIdmbID());
         System.out.println(movies.toString());
         //do something

@@ -35,11 +35,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MovieRequest }
+     * Create an instance of {@link MovieXmlRequest }
      *
      */
-    public MovieRequest createCalculatorResponse() {
-        return new MovieRequest();
+    public MovieXmlRequest createCalculatorResponse() {
+        return new MovieXmlRequest();
     }
 
 }
