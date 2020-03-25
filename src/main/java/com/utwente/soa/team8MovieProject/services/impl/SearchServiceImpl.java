@@ -1,8 +1,8 @@
 package com.utwente.soa.team8MovieProject.services.impl;
 
-import com.utwente.soa.team8MovieProject.Movie;
+import com.utwente.soa.team8MovieProject.dto.Movie;
 import com.utwente.soa.team8MovieProject.exceptions.InvalidIMdBIdException;
-import com.utwente.soa.team8MovieProject.integrations.request.MovieRequest;
+import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
 import com.utwente.soa.team8MovieProject.omdb.DetailedResult;
 import com.utwente.soa.team8MovieProject.omdb.SearchResult;
 import com.utwente.soa.team8MovieProject.services.SearchService;
@@ -23,7 +23,7 @@ public class SearchServiceImpl implements SearchService {
     private JmsTemplate jmsTemplate;
     @Value("voting")
     private String votingQueue;
-    private MovieRequest movieRequest = new MovieRequest();
+    private MovieXmlRequest movieXmlRequest = new MovieXmlRequest();
 
     // omdb API key (1000 requests per day max)
     private static String API_KEY = "dc9932d6";
@@ -152,11 +152,14 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public ResponseEntity<String> submitSuggestion(String imdb_id) {
+        //check if the requested movie is valid
         Movie movie = omdbIdLookup(imdb_id);
-        movieRequest.setMovieIdmbID(imdb_id);
-        System.out.println(votingQueue);
-        jmsTemplate.convertAndSend(votingQueue, movieRequest);
-        return  ResponseEntity.ok("Your movie requested has been added to the voting list!");
+        //create activemq msg object
+        movieXmlRequest.setName(movie.getName());
+        movieXmlRequest.setMovieIdmbID(imdb_id);
+        //send to activemq
+        jmsTemplate.convertAndSend(votingQueue, movieXmlRequest);
+        return ResponseEntity.ok("Your movie requested has been added to the voting list!");
 
     }
 }

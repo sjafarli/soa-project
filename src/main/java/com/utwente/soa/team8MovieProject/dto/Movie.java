@@ -1,5 +1,6 @@
-package com.utwente.soa.team8MovieProject;
+package com.utwente.soa.team8MovieProject.dto;
 
+//object for local movie database
 public class Movie {
     private String imdb_id;
     private String name;

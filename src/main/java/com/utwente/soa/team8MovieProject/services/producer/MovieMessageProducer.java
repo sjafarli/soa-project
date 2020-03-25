@@ -1,6 +1,6 @@
 package com.utwente.soa.team8MovieProject.services.producer;
 
-import com.utwente.soa.team8MovieProject.integrations.request.MovieRequest;
+import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
@@ -13,13 +13,13 @@ public class MovieMessageProducer {
     private JmsTemplate jmsTemplate;
     @Value("voting") private String votingQueue;
 
-    private MovieRequest movieRequest = new MovieRequest();
+    private MovieXmlRequest movieXmlRequest = new MovieXmlRequest();
 
     public String addMovieToQueue(String id) {
 
-       movieRequest.setMovieIdmbID(id);
+       movieXmlRequest.setMovieIdmbID(id);
        System.out.println(votingQueue);
-        jmsTemplate.convertAndSend(votingQueue, movieRequest);
+        jmsTemplate.convertAndSend(votingQueue, movieXmlRequest);
         return "added to queue";
     }
 }

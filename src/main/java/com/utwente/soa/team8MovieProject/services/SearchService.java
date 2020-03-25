@@ -1,6 +1,6 @@
 package com.utwente.soa.team8MovieProject.services;
 
-import com.utwente.soa.team8MovieProject.Movie;
+import com.utwente.soa.team8MovieProject.dto.Movie;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
