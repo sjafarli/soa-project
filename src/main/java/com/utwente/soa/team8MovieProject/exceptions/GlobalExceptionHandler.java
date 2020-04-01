@@ -12,8 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler({InvalidIMdBIdException.class})
-    public Object handleException(InvalidIMdBIdException exception) {
+    @ExceptionHandler({PaymentUnsuccessfulException.class})
+    public Object handleException(PaymentUnsuccessfulException exception) {
         return exception.getMessage();
     }
 }
