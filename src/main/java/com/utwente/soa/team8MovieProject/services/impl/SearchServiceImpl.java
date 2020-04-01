@@ -36,7 +36,7 @@ public class SearchServiceImpl implements SearchService {
         MOVIES.add(new Movie("tt0317219", "Cars", "2020", "TODO", true));
         MOVIES.add(new Movie("tt0468569", "Batman: The dark Knight", "2020", "TODO", true));
         MOVIES.add(new Movie("tt0103776", "Batman Returns", "2020", "TODO", true));
-        MOVIES.add(new Movie("tt7286456", "Joker", "2020", "TODO", true));
+     //   MOVIES.add(new Movie("tt7286456", "Joker", "2020", "TODO", true));
     }
 
     /**
