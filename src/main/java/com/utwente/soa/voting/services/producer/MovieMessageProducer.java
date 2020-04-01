@@ -1,6 +1,6 @@
-package com.utwente.soa.team8MovieProject.services.producer;
+package com.utwente.soa.voting.services.producer;
 
-import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
+import com.utwente.soa.voting.integrations.request.MovieXmlRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;

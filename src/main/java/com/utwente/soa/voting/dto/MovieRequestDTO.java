@@ -1,4 +1,4 @@
-package com.utwente.soa.team8MovieProject.dto;
+package com.utwente.soa.voting.dto;
 
 //object for voting database
 public class MovieRequestDTO {

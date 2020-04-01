@@ -1,4 +1,4 @@
-package com.utwente.soa.team8MovieProject.exceptions;
+package com.utwente.soa.voting.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package com.utwente.soa.team8MovieProject.integrations.request;
+package com.utwente.soa.voting.integrations.request;
 
 
 import javax.xml.bind.annotation.*;

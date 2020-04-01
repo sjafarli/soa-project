@@ -1,4 +1,4 @@
-package com.utwente.soa.team8MovieProject.config;
+package com.utwente.soa.voting.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;

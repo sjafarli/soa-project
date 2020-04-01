@@ -1,7 +1,7 @@
-package com.utwente.soa.team8MovieProject.services;
+package com.utwente.soa.voting.services;
 
-import com.utwente.soa.team8MovieProject.dto.MovieRequestDTO;
-import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
+import com.utwente.soa.voting.dto.MovieRequestDTO;
+import com.utwente.soa.voting.integrations.request.MovieXmlRequest;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
-package com.utwente.soa.team8MovieProject.services.consumer;
-import com.utwente.soa.team8MovieProject.integrations.request.MovieXmlRequest;
+package com.utwente.soa.voting.services.consumer;
+import com.utwente.soa.voting.integrations.request.MovieXmlRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

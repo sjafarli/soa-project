@@ -1,4 +1,4 @@
-package com.utwente.soa.team8MovieProject.exceptions;
+package com.utwente.soa.voting.exceptions;
 
 import java.util.NoSuchElementException;
 
