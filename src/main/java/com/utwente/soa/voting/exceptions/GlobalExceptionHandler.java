@@ -16,4 +16,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public Object handleException(InvalidIMdBIdException exception) {
         return exception.getMessage();
     }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({MovieAlreadyExistsException.class})
+    public Object handleException(MovieAlreadyExistsException exception) {
+        return exception.getMessage();
+    }
 }

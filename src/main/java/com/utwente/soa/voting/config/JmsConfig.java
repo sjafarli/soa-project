@@ -65,7 +65,7 @@ public class JmsConfig {
     public MessageConverter jaxbMarshaller() {
         // New XML Marshaller
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setPackagesToScan("com.utwente.soa.team8MovieProject.integrations");
+        jaxb2Marshaller.setPackagesToScan("com.utwente.soa.voting.integrations");
 //        jaxb2Marshaller.setSchemas(
 //                resourceLoader.getResource("classpath:xsd/NewMovieResponse.xsd"),
 //                resourceLoader.getResource("classpath:xsd/NewMovieRequest.xsd")
