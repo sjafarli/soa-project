@@ -1,6 +1,9 @@
 package com.utwente.soa.team8MovieProject.dto;
 
+import lombok.Data;
+
 //object for local movie database
+@Data
 public class Movie {
     private String imdb_id;
     private String name;
@@ -15,22 +18,8 @@ public class Movie {
         this.description = description;
         this.available = available;
     }
+    public Movie(){
 
-    public String getImdb_id() { return imdb_id; }
-
-    public String getName() {
-        return name;
     }
 
-    public String getYear() {
-        return year;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isAvailable() { return available; }
-
-    public void setAvailable(boolean available) { this.available = available; }
 }

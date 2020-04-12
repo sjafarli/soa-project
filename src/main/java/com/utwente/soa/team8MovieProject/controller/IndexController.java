@@ -55,7 +55,7 @@ public class IndexController {
         return searchService.removeMovie(id);
     }
 
-    //when user cannot find the movie and fills the add movie button, this endpoint is called, which simply adds msg to queue
+    //when user cannot find the movie and presses the add movie button, this endpoint is called, which simply adds msg to queue
     @ApiOperation(value = "Suggest a movie for further voting list", response = String.class)
     @RequestMapping(path = "voting/suggest", method = RequestMethod.POST)
     public ResponseEntity<String> addMovieToVotingList(@RequestParam String id) {

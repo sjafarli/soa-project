@@ -157,10 +157,16 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public ResponseEntity<String> submitSuggestion(String imdb_id) {
         //check if the requested movie is valid
-        Movie movie = omdbIdLookup(imdb_id);
+        Movie movie = new Movie();
+        try {
+             movie = omdbIdLookup(imdb_id);
+        }catch (InvalidIMdBIdException e){
+            e.getMessage();
+        }
         //create activemq msg object
         movieXmlRequest.setName(movie.getName());
         movieXmlRequest.setMovieIdmbID(imdb_id);
+        System.out.println(movieXmlRequest.getMovieIdmbID()+"and "+movieXmlRequest.getName());
         //send to activemq
         jmsTemplate.convertAndSend(votingQueue, movieXmlRequest);
         return ResponseEntity.ok("Your movie requested has been added to the voting list!");

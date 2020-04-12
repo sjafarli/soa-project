@@ -1,6 +1,8 @@
 package com.utwente.soa.team8MovieProject.integrations.request;
 
 
+import lombok.Data;
+
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)

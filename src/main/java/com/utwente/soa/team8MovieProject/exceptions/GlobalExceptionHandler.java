@@ -16,4 +16,5 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public Object handleException(InvalidIMdBIdException exception) {
         return exception.getMessage();
     }
+
 }
