@@ -21,7 +21,7 @@ public class IndexController {
 
     @ApiOperation(value = "Accepts the payment for the specified movie", response = String.class)
     @RequestMapping(path = "/movie/{id}/payment", method = RequestMethod.GET)
-    public String buyTicket(@PathVariable int id) {
+    public String buyTicket(@PathVariable String id) {
         return invoicePaymentService.pay(id);
     }
 

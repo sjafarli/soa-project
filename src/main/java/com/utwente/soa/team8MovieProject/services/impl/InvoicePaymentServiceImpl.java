@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public class InvoicePaymentServiceImpl implements InvoicePaymentService {
 
     @Override
-    public String pay(int movieId) {
+    public String pay(String movieId) {
         //make a sync request to 3rd party Postman mock service payments
         RestTemplate restTemplate = new RestTemplate();
 
@@ -23,7 +23,7 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
         try {
             return restTemplate.getForObject("https://a3a3d2a0-13a6-4d97-b64b-a0fe91211707.mock.pstmn.io/process-payment", String.class);
         }
-        catch (HttpServerErrorException.InternalServerError e){
+        catch (Exception e){
             throw new PaymentUnsuccessfulException();
         }
 
