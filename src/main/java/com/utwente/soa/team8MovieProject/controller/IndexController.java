@@ -38,7 +38,7 @@ public class IndexController {
         return searchService.search(query);
     }
 
-    @ApiOperation(value = "Adds a movie to local storage, information retrieved from omdb", response = String.class)
+    @ApiOperation(value = "Adds a movie to local storage, information retrieved from imdb", response = String.class)
     @RequestMapping(path = "/movies/add", method = RequestMethod.PUT)
     public Movie addMovie(@RequestParam String id) {
         return searchService.addMovie(id);
