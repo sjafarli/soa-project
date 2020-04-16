@@ -18,14 +18,14 @@ public class Swagger2Config {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("net.guides.springboot2.springboot2swagger2.controller"))
+                        .basePackage("com.utwente.soa.team8MovieProject.controller"))
                 .paths(PathSelectors.regex("/.*"))
                 .build().apiInfo(apiEndPointsInfo());
     }
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Spring Boot REST API")
                 .description("Movie Management REST API")
-                .contact(new Contact("Sevinj", "www.javaguides.net", "s.n.q.v.jafarli@student.utwente.com"))
+                .contact(new Contact("Sevinj", "www.javaguides.net", "s.n.q.v.jafarli@student.utwente.nl"))
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("1.0.0")
