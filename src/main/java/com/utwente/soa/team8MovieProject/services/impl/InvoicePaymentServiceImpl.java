@@ -21,7 +21,7 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
         RestTemplate restTemplate = new RestTemplate();
         //check if the movieId exists in the search
         try{
-            Object movie = restTemplate.getForObject("https://localhost:8081/cinema/movie/{id}", String.class,movieId);
+            Object movie = restTemplate.getForObject("https://localhost:8080/cinema/movie/{id}", String.class,movieId);
             
         }catch (NoSuchElementException e){
             return "You cannot pay for the movie that is not screening at the theatre";
