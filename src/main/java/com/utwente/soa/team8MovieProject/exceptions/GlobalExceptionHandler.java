@@ -16,4 +16,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public Object handleException(PaymentUnsuccessfulException exception) {
         return exception.getMessage();
     }
+
+
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler({MovieNotFoundException.class})
+    public Object handleException(MovieNotFoundException exception) {
+        return exception.getMessage();
+    }
 }

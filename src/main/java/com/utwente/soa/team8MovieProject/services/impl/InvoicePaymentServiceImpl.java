@@ -1,6 +1,7 @@
 package com.utwente.soa.team8MovieProject.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.utwente.soa.team8MovieProject.exceptions.MovieNotFoundException;
 import com.utwente.soa.team8MovieProject.exceptions.PaymentUnsuccessfulException;
 import com.utwente.soa.team8MovieProject.services.InvoicePaymentService;
 import org.springframework.http.HttpEntity;
@@ -21,10 +22,10 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
         RestTemplate restTemplate = new RestTemplate();
         //check if the movieId exists in the search
         try{
-            Object movie = restTemplate.getForObject("https://localhost:8080/cinema/movie/{id}", String.class,movieId);
+            Object movie = restTemplate.getForObject("http://searchservice:8080/cinema/movie/{id}", String.class,movieId);
             
-        }catch (NoSuchElementException e){
-            return "You cannot pay for the movie that is not screening at the theatre";
+        }catch (HttpServerErrorException.InternalServerError e){
+            throw new MovieNotFoundException();
         }
 
         //make a sync request to 3rd party Postman mock service payments
