@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.NoSuchElementException;
+
 
 @Service
 public class InvoicePaymentServiceImpl implements InvoicePaymentService {
@@ -18,8 +20,11 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
     public String pay(String movieId) {
         RestTemplate restTemplate = new RestTemplate();
         //check if the movieId exists in the search
-        if(restTemplate.getForObject("https://a3a3d2a0-13a6-4d97-b64b-a0fe91211707.mock.pstmn.io/process-payment", String.class)==null){
+        try{
+            Object movie = restTemplate.getForObject("https://localhost:8081/cinema/movie/{id}", String.class,movieId);
             
+        }catch (NoSuchElementException e){
+            return "You cannot pay for the movie that is not screening at the theatre";
         }
 
         //make a sync request to 3rd party Postman mock service payments
@@ -28,7 +33,7 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
 
      //sync request to payment service
         try {
-            return restTemplate.getForObject("https://a3a3d2a0-13a6-4d97-b64b-a0fe91211707.mock.pstmn.io/process-payment", String.class);
+            return restTemplate.getForObject("https://1bb6facd-608a-42a0-bc58-171bd0386383.mock.pstmn.io/payment", String.class);
         }
         catch (Exception e){
             throw new PaymentUnsuccessfulException();
