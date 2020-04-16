@@ -18,6 +18,7 @@ import java.util.NoSuchElementException;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/cinema")
 @Api
 public class IndexController {
