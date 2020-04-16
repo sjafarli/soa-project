@@ -16,8 +16,15 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
 
     @Override
     public String pay(String movieId) {
-        //make a sync request to 3rd party Postman mock service payments
         RestTemplate restTemplate = new RestTemplate();
+        //check if the movieId exists in the search
+        if(restTemplate.getForObject("https://a3a3d2a0-13a6-4d97-b64b-a0fe91211707.mock.pstmn.io/process-payment", String.class)==null){
+            
+        }
+
+        //make a sync request to 3rd party Postman mock service payments
+
+
 
      //sync request to payment service
         try {
