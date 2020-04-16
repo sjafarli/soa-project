@@ -7,8 +7,10 @@ RUN mkdir /home/app
 #
 #USER appuser
 WORKDIR /home/app
-EXPOSE 10222
+EXPOSE 8086
 
-COPY build/libs/*.jar /home/app/app.jar
+#COPY build/libs/*.jar /home/app/app.jar
+COPY . /home/app
+RUN make /home/app
 
-ENTRYPOINT exec java -jar app.jar
+#ENTRYPOINT exec java -jar app.jar
