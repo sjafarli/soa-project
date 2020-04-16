@@ -7,7 +7,7 @@ RUN mkdir /home/invoiceapp
 #
 #USER appuser
 WORKDIR /home/invoiceapp
-EXPOSE 8080
+EXPOSE 8082
 
 COPY build/libs/*.jar /home/invoiceapp/app.jar
 

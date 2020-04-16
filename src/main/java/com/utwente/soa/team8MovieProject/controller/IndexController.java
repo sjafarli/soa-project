@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/cinema")
 @Api(value = "Best Cinema")
 public class IndexController {
