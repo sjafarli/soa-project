@@ -7,7 +7,7 @@ RUN mkdir /home/app
 #
 #USER appuser
 WORKDIR /home/app
-EXPOSE 10222
+EXPOSE 10223
 
 COPY build/libs/*.jar /home/app/app.jar
 

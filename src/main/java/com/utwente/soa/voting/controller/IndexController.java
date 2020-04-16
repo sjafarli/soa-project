@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/cinema")
 @Api(value = "Best Cinema")
 public class IndexController {
