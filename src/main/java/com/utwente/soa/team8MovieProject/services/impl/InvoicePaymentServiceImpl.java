@@ -22,7 +22,7 @@ public class InvoicePaymentServiceImpl implements InvoicePaymentService {
         RestTemplate restTemplate = new RestTemplate();
         //check if the movieId exists in the search
         try{
-            Object movie = restTemplate.getForObject("http://searchservice:8080/cinema/movie/{id}", String.class,movieId);
+            Object movie = restTemplate.getForObject("http://searchservice:8084/cinema/movie/{id}", String.class,movieId);
             
         }catch (HttpServerErrorException.InternalServerError e){
             throw new MovieNotFoundException();
