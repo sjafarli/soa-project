@@ -7,7 +7,7 @@ RUN mkdir /home/searchapp
 #
 #USER appuser
 WORKDIR /home/searchapp
-EXPOSE 8081
+EXPOSE 8084
 
 COPY build/libs/*.jar /home/searchapp/app.jar
 
