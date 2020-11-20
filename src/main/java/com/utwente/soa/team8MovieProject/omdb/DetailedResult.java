@@ -23,7 +23,7 @@ public class DetailedResult {
         private String title;
 
         @XmlAttribute
-        private Integer year;
+        private String year;
 
         @XmlAttribute
         private String imdbID;
@@ -35,7 +35,7 @@ public class DetailedResult {
             return title;
         }
 
-        public Integer getYear() {
+        public String getYear() {
             return year;
         }
 
